@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.controllers.ui.HerrialdeaHautatuKud">
+   <children>
+      <ImageView fx:id="irudiContainer" fitHeight="125.0" fitWidth="402.0" layoutX="108.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="rndmText1" layoutX="182.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aukeratu zein herrialdeak " textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="rndmText2" layoutX="180.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="egin nahi duen bozkaketa:" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="herrialdeComboBox" layoutX="174.0" layoutY="221.0" prefHeight="26.0" prefWidth="242.0" />
+      <Button fx:id="okBotoia" layoutX="237.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="OK" />
+   </children>
+</AnchorPane>

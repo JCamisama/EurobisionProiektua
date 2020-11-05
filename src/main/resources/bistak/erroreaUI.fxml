@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="324.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.controllers.ui.ErroreaKud">
+   <children>
+      <ImageView fx:id="irudiContainerEzkerra" fitHeight="90.0" fitWidth="200.0" layoutX="392.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="irudiContainerEskuma" fitHeight="178.0" fitWidth="200.0" layoutX="7.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="oharraTestua" layoutX="241.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ba Sing Se jada banatu ditu bere puntuak" />
+      <Button fx:id="okBotoia" layoutX="230.0" layoutY="248.0" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="140.0" text="OK" />
+   </children>
+</AnchorPane>

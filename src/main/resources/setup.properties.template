@@ -1,0 +1,7 @@
+dbname=eurobisioa.sqlite
+user=
+password=
+useSSL=FALSE
+serverTimezone=Europe/Madrid
+irudienDirektorioa=./irudiak/
+logoNagusia=eurovisionlogo.jpeg
