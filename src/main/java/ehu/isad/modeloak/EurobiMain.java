@@ -7,7 +7,6 @@ import ehu.isad.controllers.ui.HerrialdeaHautatuKud;
 import ehu.isad.utils.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -34,8 +33,8 @@ public class EurobiMain extends Application {
 
 
     private String irudiNagusia;
-    private String hasieraLeihoa                = "/bistak/hasieraUI.fxml";
-    private String herrialdeaHautatuLehioa      = "/bistak/herrialdeaHautatuUI.fxml";
+    private String hasieraLeihoa                = "/bistak/hasiera.fxml";
+    private String herrialdeaHautatuLeihoa      = "/bistak/herrialdeaHautatuUI.fxml";
     private String erroreaLeihoa                = "/bistak/erroreaUI.fxml";
 
 
@@ -66,11 +65,13 @@ public class EurobiMain extends Application {
         this.irudiNagusia = ezarpenak.getProperty("logoNagusia");
     }
 
+
+
     private void pantailakKargatu() throws IOException {
 
-        this.pantailaBakarraKargatu(hasieraUI, hasieraKud, hasieraLeihoa);
-        this.pantailaBakarraKargatu(herrialdeaHautatuUI, herrialdeaHautatuKud, herrialdeaHautatuLehioa);
-        this.pantailaBakarraKargatu(erroreaUI, erroreaKud, erroreaLeihoa);
+        this.pantailaBakarraKargatu(this.hasieraUI, this.hasieraKud, this.hasieraLeihoa);
+        this.pantailaBakarraKargatu(this.herrialdeaHautatuUI, this.herrialdeaHautatuKud, this.herrialdeaHautatuLeihoa);
+        this.pantailaBakarraKargatu(this.erroreaUI, this.erroreaKud, this.erroreaLeihoa);
 
     }
 

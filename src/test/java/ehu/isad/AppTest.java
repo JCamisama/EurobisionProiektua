@@ -3,7 +3,6 @@
  */
 package ehu.isad;
 
-import ehu.isad.modeloak.App;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
