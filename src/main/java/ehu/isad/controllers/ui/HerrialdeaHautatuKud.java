@@ -3,7 +3,6 @@ package ehu.isad.controllers.ui;
 import ehu.isad.LeihoKudeatzaile;
 import ehu.isad.modeloak.EurobiMain;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
@@ -15,25 +14,24 @@ import java.util.ResourceBundle;
 
 public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
 
-    @FXML
-    private AnchorPane hautaketaPanela;
+    @FXML private AnchorPane hautaketaPanela;
 
-    @FXML
-    private ImageView irudiContainer;
+    @FXML private ImageView irudiContainer;
 
-    @FXML
-    private Text rndmText1;
+    @FXML private Text rndmText1;
 
-    @FXML
-    private Text rndmText2;
+    @FXML private Text rndmText2;
 
-    @FXML
-    private ComboBox<?> herrialdeComboBox;
+    @FXML private ComboBox<?> herrialdeComboBox;
 
-    @FXML
-    private Button okBotoia;
+    @FXML private Button okBotoia;
 
     private EurobiMain apiNagusia;
+
+    @Override
+    public void hasieratu(){
+
+    }
 
     @Override
     public void setMainApp(EurobiMain pNagusia) {
@@ -44,4 +42,6 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
 }

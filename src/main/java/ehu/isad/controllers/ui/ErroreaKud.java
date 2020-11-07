@@ -36,8 +36,7 @@ public class ErroreaKud implements LeihoKudeatzaile {
         this.apiNagusia.hasieraErakutsi();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void hasieratu(){
 
         String irudiNagusi = this.apiNagusia.getIrudiNagusia();
         Image irudia = IrudiKud.getInstantzia().irudiaKargatu(irudiNagusi);
@@ -46,4 +45,7 @@ public class ErroreaKud implements LeihoKudeatzaile {
         Image irudiBihotz = IrudiKud.getInstantzia().irudiaKargatu(irudiNagusi);
         this.irudiContainerEzkerra.setImage(irudiBihotz);
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {}
 }

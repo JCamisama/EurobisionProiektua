@@ -1,7 +1,5 @@
 package ehu.isad.controllers.ui;
 
-
-
 import ehu.isad.LeihoKudeatzaile;
 import ehu.isad.modeloak.EurobiMain;
 import ehu.isad.utils.IrudiKud;
@@ -20,17 +18,17 @@ public class HasieraKud implements LeihoKudeatzaile {
     //Atributuak
     private EurobiMain apiNagusia;
 
-    @FXML
-    private ImageView irudiKontainerra;
+    @FXML private AnchorPane hasieraPanela;
 
-    @FXML
-    private Button bozkatuBotoia;
+    @FXML private ImageView irudiKontainerra;
+
+    @FXML private Button bozkatuBotoia;
 
 
     //Metodoak
 
     @FXML
-    void onClick(ActionEvent event) {
+    public void onClick(ActionEvent event) {
 
         this.apiNagusia.herrialdeaHautatuErakutsi();
     }
@@ -40,14 +38,16 @@ public class HasieraKud implements LeihoKudeatzaile {
         this.apiNagusia = pNagusia;
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void hasieratu(){
 
         String irudiNagusi = this.apiNagusia.getIrudiNagusia();
         Image irudia = IrudiKud.getInstantzia().irudiaKargatu(irudiNagusi);
         this.irudiKontainerra.setImage(irudia);
     }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){}
 
 
 
