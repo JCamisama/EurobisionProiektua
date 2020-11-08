@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
@@ -32,6 +33,7 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     @Override
     public void hasieratu(){
         this.herrialdeekinBeteComboBox();
+        this.irudiContainer.setImage(this.apiNagusia.getIrudiNagusia());
     }
 
     private void herrialdeekinBeteComboBox(){
@@ -72,9 +74,23 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     }
 
     @FXML
-    public void onClickBotoian(ActionEvent actionEvent) {
+    public void onClickBotoian(ActionEvent actionEvent) throws SQLException {
 
-        this.apiNagusia.hasieraErakutsi();
+        if(this.bozkatuAlDu()){
+            this.apiNagusia.erroreaErakutsi();
+        }
+        else{
+            this.apiNagusia.bozkaketaPanelaErakutsi();
+            System.out.print("ez dut bozkatu oraindik!!!");
+        }
+    }
+
+    private boolean bozkatuAlDu() throws SQLException {
+
+        Herrialdea aukeratua = (Herrialdea) this.herrialdeComboBox.getValue();
+        boolean bozkatuDu = BozkatuKud.getInstantzia().bozkatuDu(aukeratua.getIzena());
+
+        return bozkatuDu;
     }
 
     @Override

@@ -22,14 +22,14 @@ public class BozkatuKud {
         boolean bozkatuAlDu = false;
 
         String query = "SELECT  b.bozkatuDu " +
-                        "FROM Bozkaketa p" +
+                        "FROM Bozkaketa b " +
                         "WHERE  b.bozkatuDu = '" + pHerrialde + "' AND " +
-                                "year(b.urtea) = year(now());";
+                                "b.urtea = strftime('%Y', datetime('now'));";
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
         bozkatuAlDu = rs.next();
 
-        return bozkatuAlDu;
+        return rs.next();
     }
 
 

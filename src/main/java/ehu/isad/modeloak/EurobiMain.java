@@ -66,6 +66,9 @@ public class EurobiMain extends Application {
         this.errorea.eszenatokiaErakutsi(this.stage);
     }
 
+    public void bozkaketaPanelaErakutsi() {
+    }
+
     private void irudiNagusiaKargatu() {
 
         Properties ezarpenak =  Utils.lortuEzarpenak();
@@ -78,9 +81,6 @@ public class EurobiMain extends Application {
         Image irudia = IrudiKud.getInstantzia().irudiaKargatu(this.irudiNagusia);
         return irudia;
     }
-
-
-
 
 
 
