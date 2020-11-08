@@ -1,4 +1,6 @@
 package ehu.isad.controllers.db;
+import ehu.isad.utils.Utils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -12,6 +14,19 @@ import java.util.Properties;
 public class DBKudeatzaile {
 
 	Connection conn = null;
+	// singleton patroia
+	private static DBKudeatzaile instantzia = new DBKudeatzaile();
+	public static DBKudeatzaile getInstantzia() {
+		return instantzia;
+	}
+	private DBKudeatzaile()  {
+
+		Properties ezarpenak = Utils.lortuEzarpenak();
+		String datubasea = ezarpenak.getProperty("dbname");
+		this.conOpen(datubasea);
+	}
+
+
 
 	private void conOpen(String dbpath) {
 		try {
@@ -53,35 +68,7 @@ public class DBKudeatzaile {
 		return rs;
 	}
 
-	// singleton patroia
-	private static DBKudeatzaile instantzia = new DBKudeatzaile();
 
-	private DBKudeatzaile()  {
-
-		Properties properties = null;
-		InputStream in = null;
-
-		try {
-			in = this.getClass().getResourceAsStream("/setup.properties");
-			properties = new Properties();
-			properties.load(in);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				in.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		this.conOpen(properties.getProperty("dbpath"));
-
-	}
-
-	public static DBKudeatzaile getInstantzia() {
-		return instantzia;
-	}
 
 	public ResultSet execSQL(String query) {
 		int count = 0;

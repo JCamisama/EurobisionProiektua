@@ -53,7 +53,8 @@ public class IrudiKud {
         BufferedImage   irudiaBuff  = null;
         Image           irudia      = null;
         try{
-            File irudiFitx = new File(this.irudienDirektorioa+pIrudiaIzena);
+            String irudiPath = this.irudienDirektorioa+pIrudiaIzena;
+            File irudiFitx = new File(irudiPath);
             irudiaBuff = ImageIO.read(irudiFitx);
             irudia = SwingFXUtils.toFXImage(irudiaBuff, null);
 

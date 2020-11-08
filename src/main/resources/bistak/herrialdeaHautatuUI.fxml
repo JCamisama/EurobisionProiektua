@@ -20,7 +20,7 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <ComboBox fx:id="herrialdeComboBox" layoutX="174.0" layoutY="221.0" prefHeight="26.0" prefWidth="242.0" />
-      <Button fx:id="okBotoia" layoutX="237.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="OK" />
+      <ComboBox fx:id="herrialdeComboBox" layoutX="174.0" layoutY="221.0" onAction="#onClickComboboxen" prefHeight="26.0" prefWidth="242.0" />
+      <Button fx:id="okBotoia" layoutX="237.0" layoutY="344.0" mnemonicParsing="false" onAction="#onClickBotoian" prefHeight="26.0" prefWidth="111.0" text="OK" />
    </children>
 </AnchorPane>

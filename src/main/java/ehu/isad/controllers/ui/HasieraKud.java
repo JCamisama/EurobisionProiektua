@@ -40,9 +40,7 @@ public class HasieraKud implements LeihoKudeatzaile {
 
     public void hasieratu(){
 
-        String irudiNagusi = this.apiNagusia.getIrudiNagusia();
-        Image irudia = IrudiKud.getInstantzia().irudiaKargatu(irudiNagusi);
-        this.irudiKontainerra.setImage(irudia);
+        this.irudiKontainerra.setImage(this.apiNagusia.getIrudiNagusia());
     }
 
 

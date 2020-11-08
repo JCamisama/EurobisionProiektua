@@ -1,16 +1,10 @@
 package ehu.isad.modeloak;
 
-import ehu.isad.LeihoKudeatzaile;
-import ehu.isad.controllers.ui.ErroreaKud;
-import ehu.isad.controllers.ui.HasieraKud;
-import ehu.isad.controllers.ui.HerrialdeaHautatuKud;
+import ehu.isad.utils.IrudiKud;
 import ehu.isad.utils.Utils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Properties;
 
@@ -20,8 +14,8 @@ public class EurobiMain extends Application {
     private Stage stage;
 
     private String irudiNagusia;
-    //******Hurrengoak dokumentu batetik atera beharko lirateke, hurrengo hobekuntza inplementatuko da.
-    private String hasieraLeihoa                = "/bistak/hasiera.fxml";
+    //******Hurrengoak dokumentu batetik atera beharko lirateke, hurrengo hobekuntzean inplementatuko da.
+    private String hasieraLeihoa                = "/bistak/hasieraUI.fxml";
     private String herrialdeaHautatuLeihoa      = "/bistak/herrialdeaHautatuUI.fxml";
     private String erroreaLeihoa                = "/bistak/erroreaUI.fxml";
 
@@ -48,7 +42,7 @@ public class EurobiMain extends Application {
         this.stage = primaryStage;
         pantailakKargatu();
 
-        hasiera.eszenatokiaErakutsi(this.stage);
+        this.hasiera.eszenatokiaErakutsi(this.stage);
     }
 
 
@@ -79,8 +73,10 @@ public class EurobiMain extends Application {
     }
 
 
-    public String getIrudiNagusia(){
-        return this.irudiNagusia;
+    public Image getIrudiNagusia(){
+
+        Image irudia = IrudiKud.getInstantzia().irudiaKargatu(this.irudiNagusia);
+        return irudia;
     }
 
 

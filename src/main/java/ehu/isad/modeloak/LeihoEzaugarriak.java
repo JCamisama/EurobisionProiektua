@@ -28,7 +28,7 @@ public class LeihoEzaugarriak {
         this.leihoUI  = (Parent) loader.load();
         this.leihoKud = loader.getController();
         this.leihoKud.setMainApp(pMain);
-        this.leihoKud.initialize(null, null);
+        this.leihoKud.hasieratu();
         this.leihoEszena = new Scene(this.leihoUI);
     }
 
