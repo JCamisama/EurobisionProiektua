@@ -38,10 +38,14 @@ public class HasieraKud implements LeihoKudeatzaile {
         this.apiNagusia = pNagusia;
     }
 
+    @Override
     public void hasieratu(){
 
         this.irudiKontainerra.setImage(this.apiNagusia.getIrudiNagusia());
     }
+
+    @Override
+    public void herrialdeaEguneratu(String pHerrialde){}
 
 
     @Override

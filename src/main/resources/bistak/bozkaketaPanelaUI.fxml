@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.controllers.ui.BozkaketaPanelaKud">
+   <children>
+      <TableView fx:id="herrialdeenTaula" layoutX="32.0" layoutY="79.0" prefHeight="278.0" prefWidth="540.0">
+        <columns>
+          <TableColumn fx:id="bandera" prefWidth="50.0" />
+          <TableColumn fx:id="herrialdeIzena" prefWidth="151.0" text="Herrialdea" />
+            <TableColumn fx:id="artista" prefWidth="117.0" text="Artista" />
+            <TableColumn fx:id="abestia" prefWidth="110.0" text="Abestia" />
+            <TableColumn fx:id="puntuak" prefWidth="111.0" text="Puntuak" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="bihotzaKontainerra" fitHeight="70.0" fitWidth="66.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoKontainerra" fitHeight="70.0" fitWidth="260.0" layoutX="336.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="herrialdeText" layoutX="133.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Herrialdea">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="78.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="horrela nahi ditu bere puntuak banatu">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Text>
+      <Button fx:id="bozkatuBotoia" layoutX="200.0" layoutY="381.0" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="205.0" text="Bozkaketa Gorde" />
+   </children>
+</AnchorPane>

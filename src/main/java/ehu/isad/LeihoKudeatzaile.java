@@ -8,4 +8,5 @@ public interface LeihoKudeatzaile extends Initializable {
 
     public void setMainApp(EurobiMain pNagusia);
     public void hasieratu();
+    public void herrialdeaEguneratu(String pHerrialde);
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,15 +16,11 @@ public class ErroreaKud implements LeihoKudeatzaile {
 
     private EurobiMain apiNagusia;
 
-    @FXML
-    private ImageView irudiContainerEzkerra;
+    @FXML private ImageView irudiContainerEzkerra;
 
-    @FXML
-    private ImageView irudiContainerEskuma;
+    @FXML private ImageView irudiContainerEskuma;
 
-    @FXML
-    private Button okBotoia;
-    private String bihotza = "eurovisionheart.png";
+    @FXML private Text herrialdeText;
 
     //Metodoak
     public void setMainApp(EurobiMain pNagusia) {
@@ -39,9 +36,11 @@ public class ErroreaKud implements LeihoKudeatzaile {
     public void hasieratu(){
 
         this.irudiContainerEskuma.setImage(this.apiNagusia.getIrudiNagusia());
+        this.irudiContainerEzkerra.setImage(this.apiNagusia.getBihotza());
+    }
 
-        Image irudiBihotz = IrudiKud.getInstantzia().irudiaKargatu(bihotza);
-        this.irudiContainerEzkerra.setImage(irudiBihotz);
+    public void herrialdeaEguneratu(String pHerrialde){
+        this.herrialdeText.setText(pHerrialde);
     }
 
     @Override

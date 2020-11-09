@@ -14,19 +14,25 @@ public class EurobiMain extends Application {
     private Stage stage;
 
     private String irudiNagusia;
+    private String bihotzIrudiNagusia;
+    private String unekoHerrialdea;
+
     //******Hurrengoak dokumentu batetik atera beharko lirateke, hurrengo hobekuntzean inplementatuko da.
     private String hasieraLeihoa                = "/bistak/hasieraUI.fxml";
     private String herrialdeaHautatuLeihoa      = "/bistak/herrialdeaHautatuUI.fxml";
     private String erroreaLeihoa                = "/bistak/erroreaUI.fxml";
+    private String bozkaketaLeihoa              = "/bistak/bozkaketaPanelaUI.fxml";
 
     private String hasieraIzenburu              = "EuroVision";
     private String hautatuIzenburu              = "Hautatzeko Panela";
     private String erroreaIzenburu              = "Bozkaketa Jadanik Burutu Da";
+    private String bozkaketaIzenburu            = "Bozkaketa egiteko pantailila";
     //*****************************************************************************************
 
     private LeihoEzaugarriak hasiera;
     private LeihoEzaugarriak herrialdeaHautatu;
     private LeihoEzaugarriak errorea;
+    private LeihoEzaugarriak bozkaketaPanela;
 
 
     //Metodoak
@@ -51,6 +57,7 @@ public class EurobiMain extends Application {
         this.herrialdeaHautatu  = new LeihoEzaugarriak(this.hautatuIzenburu, this.herrialdeaHautatuLeihoa, this);
         this.hasiera            = new LeihoEzaugarriak(this.hasieraIzenburu, this.hasieraLeihoa, this);
         this.errorea            = new LeihoEzaugarriak(this.erroreaIzenburu, this.erroreaLeihoa, this);
+        this.bozkaketaPanela    = new LeihoEzaugarriak(this.bozkaketaIzenburu, this.bozkaketaLeihoa,this);
     }
 
 
@@ -63,16 +70,20 @@ public class EurobiMain extends Application {
     }
 
     public void erroreaErakutsi() {
+        this.errorea.herrialdeaPasatuKudeatzaileari(this.unekoHerrialdea);
         this.errorea.eszenatokiaErakutsi(this.stage);
     }
 
     public void bozkaketaPanelaErakutsi() {
+        this.bozkaketaPanela.eszenatokiaErakutsi(this.stage);
+        this.bozkaketaPanela.herrialdeaPasatuKudeatzaileari(this.unekoHerrialdea);
     }
 
     private void irudiNagusiaKargatu() {
 
         Properties ezarpenak =  Utils.lortuEzarpenak();
-        this.irudiNagusia = ezarpenak.getProperty("logoNagusia");
+        this.irudiNagusia       = ezarpenak.getProperty("logoNagusia");
+        this.bihotzIrudiNagusia = ezarpenak.getProperty("bihotza");
     }
 
 
@@ -81,6 +92,17 @@ public class EurobiMain extends Application {
         Image irudia = IrudiKud.getInstantzia().irudiaKargatu(this.irudiNagusia);
         return irudia;
     }
+
+    public Image getBihotza(){
+
+        Image irudia = IrudiKud.getInstantzia().irudiaKargatu(this.bihotzIrudiNagusia);
+        return irudia;
+    }
+
+    public void unekoHerrialdeaEguneratu(String pHerrialdea){
+        this.unekoHerrialdea = pHerrialdea;
+    }
+
 
 
 

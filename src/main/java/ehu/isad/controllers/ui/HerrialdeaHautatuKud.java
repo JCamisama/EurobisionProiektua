@@ -43,7 +43,9 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
 
         this.herrialdeComboBox.setItems(herrialdeList);
         this.herrialdeComboBox.setEditable(false);
+        this.herrialdeComboBox.setValue(herrialdeList.get(0));
         this.comboBoxekoEtiketaEguneratu();
+
     }
 
 
@@ -76,22 +78,30 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     @FXML
     public void onClickBotoian(ActionEvent actionEvent) throws SQLException {
 
+        this.apiNagusia.unekoHerrialdeaEguneratu(this.unekoHerrialdeAukeratua());
+
         if(this.bozkatuAlDu()){
             this.apiNagusia.erroreaErakutsi();
         }
         else{
             this.apiNagusia.bozkaketaPanelaErakutsi();
-            System.out.print("ez dut bozkatu oraindik!!!");
         }
     }
 
     private boolean bozkatuAlDu() throws SQLException {
 
-        Herrialdea aukeratua = (Herrialdea) this.herrialdeComboBox.getValue();
-        boolean bozkatuDu = BozkatuKud.getInstantzia().bozkatuDu(aukeratua.getIzena());
-
+        boolean bozkatuDu = BozkatuKud.getInstantzia().bozkatuDu(this.unekoHerrialdeAukeratua());
         return bozkatuDu;
     }
+
+    private String unekoHerrialdeAukeratua(){
+
+        Herrialdea aukeratua = (Herrialdea) this.herrialdeComboBox.getValue();
+        return aukeratua.getIzena();
+    }
+
+    @Override
+    public void herrialdeaEguneratu(String pHerrialde){}
 
     @Override
     public void setMainApp(EurobiMain pNagusia) {
@@ -102,6 +112,7 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 
 
 }

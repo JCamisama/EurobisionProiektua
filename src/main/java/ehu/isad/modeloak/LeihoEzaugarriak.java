@@ -38,4 +38,9 @@ public class LeihoEzaugarriak {
         pStage.setScene(this.leihoEszena);
         pStage.show();
     }
+
+    public void herrialdeaPasatuKudeatzaileari(String pHerrialdea){
+
+        this.leihoKud.herrialdeaEguneratu(pHerrialdea);
+    }
 }
