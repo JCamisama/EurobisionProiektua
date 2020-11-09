@@ -51,6 +51,7 @@ public class BozkatuKud {
         return herrialdeList;
     }
 
+
     private ResultSet herrialdeakEskatuDatuBaseari() {
 
         String query = "SELECT  o.herrialdea, o.abestia, o.artista, o.puntuak, h.bandera  " +
@@ -63,6 +64,7 @@ public class BozkatuKud {
 
         return rs;
     }
+
 
     private Herrialdea herrialdeaLortu(ResultSet pHerrialdeZerre) throws SQLException {
 
@@ -81,6 +83,38 @@ public class BozkatuKud {
     }
 
 
+    public ObservableList<Herrialdea> lortuTopHiru() {
+
+        ObservableList<Herrialdea> herrialdeList = FXCollections.observableArrayList();
+        Herrialdea herriHau;
+        ResultSet rSet = this.topHiruEskatuDatuBaseari();
+
+        try {
+            while (rSet.next()) {
+                herriHau = this.herrialdeaLortu(rSet);
+                herrialdeList.add(herriHau);
+            }
+        } catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+
+        return herrialdeList;
+    }
+
+
+    private ResultSet topHiruEskatuDatuBaseari() {
+
+        String query = "SELECT  o.herrialdea, o.abestia, o.artista, o.puntuak, h.bandera   " +
+                "FROM Ordezkaritza o, Herrialde h " +
+                "WHERE  o.herrialdea=h.izena " +
+                "ORDER BY o.puntuak "+
+                "LIMIT 3;";
+
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        ResultSet rs = dbKudeatzaile.execSQL(query);
+
+        return rs;
+    }
 
 
 }

@@ -23,8 +23,6 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
     //Atributuak
     private EurobiMain apiNagusia;
 
-    @FXML private ResourceBundle resources;
-    @FXML private URL location;
     @FXML private TableView<Herrialdea> herrialdeenTaula;
     @FXML private TableColumn<Herrialdea, String> herrialdeIzena;
     @FXML private TableColumn<Herrialdea, String> artista;
@@ -74,7 +72,7 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
 
     @FXML
     void onClick(ActionEvent event) {
-
+        this.apiNagusia.topHiruErakutsi();
     }
 
     @Override

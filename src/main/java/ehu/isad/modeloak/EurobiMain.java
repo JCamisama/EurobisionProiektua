@@ -22,17 +22,20 @@ public class EurobiMain extends Application {
     private String herrialdeaHautatuLeihoa      = "/bistak/herrialdeaHautatuUI.fxml";
     private String erroreaLeihoa                = "/bistak/erroreaUI.fxml";
     private String bozkaketaLeihoa              = "/bistak/bozkaketaPanelaUI.fxml";
+    private String topHiruLeihoa                = "/bistak/topHiruUI.fxml";
 
     private String hasieraIzenburu              = "EuroVision";
     private String hautatuIzenburu              = "Hautatzeko Panela";
     private String erroreaIzenburu              = "Bozkaketa Jadanik Burutu Da";
     private String bozkaketaIzenburu            = "Bozkaketa egiteko pantailila";
+    private String topHiruIzenburu              = "Top 3";
     //*****************************************************************************************
 
     private LeihoEzaugarriak hasiera;
     private LeihoEzaugarriak herrialdeaHautatu;
     private LeihoEzaugarriak errorea;
     private LeihoEzaugarriak bozkaketaPanela;
+    private LeihoEzaugarriak topHiru;
 
 
     //Metodoak
@@ -58,6 +61,7 @@ public class EurobiMain extends Application {
         this.hasiera            = new LeihoEzaugarriak(this.hasieraIzenburu, this.hasieraLeihoa, this);
         this.errorea            = new LeihoEzaugarriak(this.erroreaIzenburu, this.erroreaLeihoa, this);
         this.bozkaketaPanela    = new LeihoEzaugarriak(this.bozkaketaIzenburu, this.bozkaketaLeihoa,this);
+        this.topHiru            = new LeihoEzaugarriak(this.topHiruIzenburu, this.topHiruLeihoa, this);
     }
 
 
@@ -77,6 +81,10 @@ public class EurobiMain extends Application {
     public void bozkaketaPanelaErakutsi() {
         this.bozkaketaPanela.eszenatokiaErakutsi(this.stage);
         this.bozkaketaPanela.herrialdeaPasatuKudeatzaileari(this.unekoHerrialdea);
+    }
+
+    public void topHiruErakutsi(){
+        this.topHiru.eszenatokiaErakutsi(this.stage);
     }
 
     private void irudiNagusiaKargatu() {
