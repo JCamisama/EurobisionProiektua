@@ -11,7 +11,7 @@ public class Herrialdea {
     private String abestia;
     private int    puntuak;
     private String bandera;
-    private int    bozkaketakoPuntuak;
+    private int bozkaketanJasotakoPuntuak;
 
 
     public Herrialdea(String pIzena, String pArtista, String pAbestia, String pBandera, int pPuntuak) {
@@ -22,7 +22,7 @@ public class Herrialdea {
         this.bandera    =   pBandera;
         this.puntuak    =   pPuntuak;
 
-        this.bozkaketakoPuntuak = 0;
+        this.bozkaketanJasotakoPuntuak = 0;
     }
 
     public String getIzena() {
@@ -70,10 +70,10 @@ public class Herrialdea {
     }
 
     public int getBozkaketakoPuntuak() {
-        return bozkaketakoPuntuak;
+        return bozkaketanJasotakoPuntuak;
     }
 
     public void setBozkaketakoPuntuak(int bozkaketakoPuntuak) {
-        this.bozkaketakoPuntuak = bozkaketakoPuntuak;
+        this.bozkaketanJasotakoPuntuak = bozkaketakoPuntuak;
     }
 }

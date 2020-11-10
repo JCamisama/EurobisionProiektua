@@ -117,4 +117,47 @@ public class BozkatuKud {
     }
 
 
+    public void puntuakEguneratu(ObservableList<Herrialdea> pHerrialdeenZerrenda, String pBozkatzailea) {
+
+        for(Herrialdea herriHau : pHerrialdeenZerrenda){
+            this.bozkaketaDatuBaseanIdatzi(pBozkatzailea, herriHau);
+        }
+
+    }
+
+    private void bozkaketaDatuBaseanIdatzi(String pBozkatzailea, Herrialdea pHerria) {
+
+        String insertEskaera = this.bozkaketaBerriBatenEskaeraPrestatu(pBozkatzailea, pHerria);
+        String updateEskaera = this.puntuakEguneratzekoEskaeraPrestatu(pHerria);
+
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        dbKudeatzaile.execSQL(insertEskaera);
+        dbKudeatzaile.execSQL(updateEskaera);
+    }
+
+    private String bozkaketaBerriBatenEskaeraPrestatu(String pBozkatzailea, Herrialdea pHerria) {
+
+        String  bozkatuaIzanDa = pHerria.getIzena();
+        int     puntuak        = pHerria.getBozkaketakoPuntuak();
+
+        String eskaera ="INSERT INTO Bozkaketa(bozkatuDu, bozkatuaIzanDa, urtea, puntuak) " +
+                        "VALUES('"+pBozkatzailea+"', '"+bozkatuaIzanDa+"', " +
+                "strftime('%Y', datetime('now')), "+puntuak+");";
+
+        return eskaera;
+    }
+
+    private String puntuakEguneratzekoEskaeraPrestatu(Herrialdea pHerria) {
+
+        String  bozkatuaIzanDa = pHerria.getIzena();
+        int     puntuak        = pHerria.getPuntuak();
+
+        String eskaera ="UPDATE Ordezkaritza " +
+                "SET "+puntuak+" " +
+                "WHERE herrialdea = '"+bozkatuaIzanDa+"' AND " +
+                "urtea = strftime('%Y', datetime('now'));";
+
+        return eskaera;
+
+    }
 }

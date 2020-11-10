@@ -3,14 +3,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="324.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.controllers.ui.ErroreaKud">
    <children>
       <ImageView fx:id="irudiContainerEzkerra" fitHeight="143.0" fitWidth="200.0" layoutX="14.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="irudiContainerEskuma" fitHeight="90.0" fitWidth="350.0" layoutX="227.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="oharraTestua" layoutX="312.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" jada banatu ditu bere puntuak" />
+      <Text fx:id="oharraTestua" layoutX="253.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jada banatu ditu bere puntuak&#10;edo 5 puntuko limitea ez du&#10;errespetatu&#10;" />
       <Button fx:id="okBotoia" layoutX="253.0" layoutY="252.0" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="95.0" text="OK" />
-      <Text fx:id="herrialdeText" layoutX="239.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Herrialdea" />
+      <Text fx:id="herrialdeText" layoutX="253.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Herrialdea">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
    </children>
 </AnchorPane>

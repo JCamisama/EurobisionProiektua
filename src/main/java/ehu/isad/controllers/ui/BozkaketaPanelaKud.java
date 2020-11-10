@@ -7,12 +7,16 @@ import ehu.isad.modeloak.Herrialdea;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+import javafx.util.converter.IntegerStringConverter;
 
 
 import java.net.URL;
@@ -34,11 +38,7 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
     @FXML private ImageView bihotzaKontainerra;
     @FXML private Text herrialdeText;
 
-    @FXML private Button bozkatuBotoia;
-
-
     private ObservableList<Herrialdea> herrialdeenZerrenda = BozkatuKud.getInstantzia().lortuHerrialdeak();
-
 
     //Metodoak
     @Override
@@ -49,16 +49,50 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
     @Override
     public void hasieratu() {
 
+        this.herrialdeenTaula.setEditable(true);
+
+        // modeloaren datuak taulan txertatu
+        this.herrialdeenTaula.setItems(this.herrialdeenZerrenda);
+
         this.herrialdeIzena.setCellValueFactory(new PropertyValueFactory<>("Izena"));
         this.artista.setCellValueFactory(new PropertyValueFactory<>("Artista"));
         this.abestia.setCellValueFactory(new PropertyValueFactory<>("Abestia"));
         this.bandera.setCellValueFactory(new PropertyValueFactory<>("Bandera"));
-        this.puntuak.setCellValueFactory(new PropertyValueFactory<>("BozkaketakoPuntuak"));
+        this.puntuak.setCellValueFactory(new PropertyValueFactory<Herrialdea, Integer>("BozkaketakoPuntuak"));
+
+        //Puntuen gelaxka editagarria izateko
+        this.puntuak.setCellFactory(TextFieldTableCell.<Herrialdea, Integer>
+                forTableColumn(new IntegerStringConverter()));
 
 
+        puntuak.setOnEditCommit((TableColumn.CellEditEvent<Herrialdea, Integer> event) -> {
 
-        // modeloaren datuak taulan txertatu
-        this.herrialdeenTaula.setItems(this.herrialdeenZerrenda);
+            TablePosition<Herrialdea, Integer> pos = event.getTablePosition();
+            int row = pos.getRow();
+            Herrialdea herriHau = event.getTableView().getItems().get(row);
+            Integer puntuBerriak = event.getNewValue();
+
+            herriHau.setBozkaketakoPuntuak(puntuBerriak);
+        });
+
+        Callback<TableColumn<Herrialdea, Integer>, TableCell<Herrialdea, Integer>> defaultTextFieldCellFactory
+                = TextFieldTableCell.forTableColumn(new IntegerStringConverter());
+
+        this.puntuak.setCellFactory(col -> {
+            TableCell<Herrialdea, Integer> cell = defaultTextFieldCellFactory.call(col);
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    if (cell.getTableView().getSelectionModel().getSelectedItem().
+                            getIzena().equals(this.herrialdeText.getText())) {
+                        cell.setEditable(false);
+                    } else {
+                        cell.setEditable(true);
+                    }
+                }
+            });
+            return cell;
+        });
         
         // gainerako irudiak hasieratu
         this.irudiakHasieratu();
@@ -72,7 +106,41 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
 
     @FXML
     void onClick(ActionEvent event) {
-        this.apiNagusia.topHiruErakutsi();
+
+        if ( this.ondoBanatuDitu() ){
+            this.herrialdeenPuntuakEgunetatu();
+            BozkatuKud.getInstantzia().puntuakEguneratu(this.herrialdeenZerrenda, this.herrialdeText.getText());
+            this.apiNagusia.topHiruErakutsi();
+        }
+        else{
+            this.apiNagusia.erroreaErakutsi();
+        }
+
+        this.herrialdePartaideenBozkaketaPuntuakErreseteatu();
+    }
+
+    private void herrialdeenPuntuakEgunetatu() {
+        for(Herrialdea herri : this.herrialdeenZerrenda){
+            herri.setPuntuak( herri.getPuntuak()+herri.getBozkaketakoPuntuak());
+        }
+    }
+
+    private void herrialdePartaideenBozkaketaPuntuakErreseteatu() {
+        for(Herrialdea herri : this.herrialdeenZerrenda){
+            herri.setBozkaketakoPuntuak(0);
+        }
+    }
+
+    private boolean ondoBanatuDitu(){
+        //AurreB: Ondo banatzeak 5 puntu totalean sartzeak dakar
+
+        int banatutakoPuntuenTotala = 0;
+
+        for(Herrialdea herri : this.herrialdeenZerrenda){
+            banatutakoPuntuenTotala += herri.getBozkaketakoPuntuak();
+        }
+
+        return banatutakoPuntuenTotala == 5;
     }
 
     @Override

@@ -111,6 +111,8 @@ public class EurobiMain extends Application {
         this.unekoHerrialdea = pHerrialdea;
     }
 
+    //public String getUnekoHerrialdea(){ return this.unekoHerrialdea; }
+
 
 
 
