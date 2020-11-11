@@ -2,10 +2,7 @@ package ehu.isad.controllers.ui;
 
 import ehu.isad.LeihoKudeatzaile;
 import ehu.isad.modeloak.EurobiMain;
-import ehu.isad.utils.IrudiKud;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 

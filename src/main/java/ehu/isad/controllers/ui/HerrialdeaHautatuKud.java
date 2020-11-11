@@ -20,13 +20,9 @@ import java.util.ResourceBundle;
 
 public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
 
-    @FXML private AnchorPane hautaketaPanela;
-
     @FXML private ImageView irudiContainer;
 
     @FXML private ComboBox herrialdeComboBox;
-
-    @FXML private Button okBotoia;
 
     private EurobiMain apiNagusia;
 
@@ -103,10 +99,7 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     @Override
     public void herrialdeaEguneratu(String pHerrialde){}
 
-    @Override
-    public void top3Eguneratu() {
 
-    }
 
     @Override
     public void setMainApp(EurobiMain pNagusia) {
@@ -114,10 +107,11 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {}
+
+    @Override
+    public void top3Eguneratu() {
 
     }
-
-
 
 }

@@ -17,7 +17,7 @@ public class EurobiMain extends Application {
     private String bihotzIrudiNagusia;
     private String unekoHerrialdea;
 
-    //******Hurrengoak dokumentu batetik atera beharko lirateke, hurrengo hobekuntzean inplementatuko da.
+    //******Hurrengoak dokumentu batetik atera beharko lirateke.
     private String hasieraLeihoa                = "/bistak/hasieraUI.fxml";
     private String herrialdeaHautatuLeihoa      = "/bistak/herrialdeaHautatuUI.fxml";
     private String erroreaLeihoa                = "/bistak/erroreaUI.fxml";
@@ -112,10 +112,6 @@ public class EurobiMain extends Application {
     public void unekoHerrialdeaEguneratu(String pHerrialdea){
         this.unekoHerrialdea = pHerrialdea;
     }
-
-    //public String getUnekoHerrialdea(){ return this.unekoHerrialdea; }
-
-
 
 
 }
