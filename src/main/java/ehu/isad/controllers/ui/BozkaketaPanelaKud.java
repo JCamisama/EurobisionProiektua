@@ -20,6 +20,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class BozkaketaPanelaKud implements LeihoKudeatzaile {
@@ -93,7 +94,7 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
             });
             return cell;
         });
-        
+                
         // gainerako irudiak hasieratu
         this.irudiakHasieratu();
     }
@@ -132,15 +133,20 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
     }
 
     private boolean ondoBanatuDitu(){
-        //AurreB: Ondo banatzeak 5 puntu totalean sartzeak dakar
+        //AurreB: Ondo banatzeak 5 puntu totalean sartzeak dakar eta puntu negatiborik ez onartzea
 
         int banatutakoPuntuenTotala = 0;
+        Iterator<Herrialdea> itr = this.herrialdeenZerrenda.iterator();
+        Herrialdea herriHau;
+        boolean puntuNegatiborenBatDago = false;
 
-        for(Herrialdea herri : this.herrialdeenZerrenda){
-            banatutakoPuntuenTotala += herri.getBozkaketakoPuntuak();
+        while(itr.hasNext() && !puntuNegatiborenBatDago){
+            herriHau = itr.next();
+            banatutakoPuntuenTotala += herriHau.getBozkaketakoPuntuak();
+            puntuNegatiborenBatDago = herriHau.getBozkaketakoPuntuak()<0;
         }
 
-        return banatutakoPuntuenTotala == 5;
+        return (banatutakoPuntuenTotala == 5) && !puntuNegatiborenBatDago;
     }
 
     @Override
