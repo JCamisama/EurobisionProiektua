@@ -52,7 +52,15 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
 
         this.herrialdeenTaula.setEditable(true);
 
-        // modeloaren datuak taulan txertatu
+        this.modeloarenDatuakTaulanTxertatu();
+        this.puntuenTaulaEditagarriaEgin();
+        this.puntuenTaularenAldaketakGauzatu();
+        this.unekoHerrialdeaEditagarriaEzIzateaZiurtatu();
+
+        this.irudiakHasieratu();
+    }
+
+    private void modeloarenDatuakTaulanTxertatu(){
         this.herrialdeenTaula.setItems(this.herrialdeenZerrenda);
 
         this.herrialdeIzena.setCellValueFactory(new PropertyValueFactory<>("Izena"));
@@ -60,12 +68,14 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
         this.abestia.setCellValueFactory(new PropertyValueFactory<>("Abestia"));
         this.bandera.setCellValueFactory(new PropertyValueFactory<>("Bandera"));
         this.puntuak.setCellValueFactory(new PropertyValueFactory<Herrialdea, Integer>("BozkaketakoPuntuak"));
+    }
 
-        //Puntuen gelaxka editagarria izateko
+    private void puntuenTaulaEditagarriaEgin(){
         this.puntuak.setCellFactory(TextFieldTableCell.<Herrialdea, Integer>
                 forTableColumn(new IntegerStringConverter()));
+    }
 
-
+    private void puntuenTaularenAldaketakGauzatu(){
         puntuak.setOnEditCommit((TableColumn.CellEditEvent<Herrialdea, Integer> event) -> {
 
             TablePosition<Herrialdea, Integer> pos = event.getTablePosition();
@@ -75,12 +85,15 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
 
             herriHau.setBozkaketakoPuntuak(puntuBerriak);
         });
+    }
+
+    private void unekoHerrialdeaEditagarriaEzIzateaZiurtatu(){
 
         Callback<TableColumn<Herrialdea, Integer>, TableCell<Herrialdea, Integer>> defaultTextFieldCellFactory
                 = TextFieldTableCell.forTableColumn(new IntegerStringConverter());
 
-        this.puntuak.setCellFactory(col -> {
-            TableCell<Herrialdea, Integer> cell = defaultTextFieldCellFactory.call(col);
+        this.puntuak.setCellFactory(kol -> {
+            TableCell<Herrialdea, Integer> cell = defaultTextFieldCellFactory.call(kol);
 
             cell.setOnMouseClicked(event -> {
                 if (!cell.isEmpty()) {
@@ -94,9 +107,6 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
             });
             return cell;
         });
-                
-        // gainerako irudiak hasieratu
-        this.irudiakHasieratu();
     }
 
     private void irudiakHasieratu() {
@@ -116,7 +126,6 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
         else{
             this.apiNagusia.erroreaErakutsi();
         }
-
         this.herrialdePartaideenBozkaketaPuntuakErreseteatu();
     }
 
@@ -130,6 +139,7 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
         for(Herrialdea herri : this.herrialdeenZerrenda){
             herri.setBozkaketakoPuntuak(0);
         }
+        herrialdeenTaula.refresh();
     }
 
     private boolean ondoBanatuDitu(){
@@ -153,6 +163,9 @@ public class BozkaketaPanelaKud implements LeihoKudeatzaile {
     public void herrialdeaEguneratu(String pHerrialde){
         this.herrialdeText.setText(pHerrialde);
     }
+
+    @Override
+    public void top3Eguneratu() {}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}

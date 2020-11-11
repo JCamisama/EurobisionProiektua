@@ -43,4 +43,8 @@ public class LeihoEzaugarriak {
 
         this.leihoKud.herrialdeaEguneratu(pHerrialdea);
     }
+
+    public void topHiruEguneratu() {
+        this.leihoKud.top3Eguneratu();
+    }
 }

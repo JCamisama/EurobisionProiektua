@@ -47,6 +47,9 @@ public class HasieraKud implements LeihoKudeatzaile {
     @Override
     public void herrialdeaEguneratu(String pHerrialde){}
 
+    @Override
+    public void top3Eguneratu() {}
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources){}

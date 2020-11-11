@@ -84,6 +84,8 @@ public class EurobiMain extends Application {
     }
 
     public void topHiruErakutsi(){
+
+        this.topHiru.topHiruEguneratu();
         this.topHiru.eszenatokiaErakutsi(this.stage);
     }
 

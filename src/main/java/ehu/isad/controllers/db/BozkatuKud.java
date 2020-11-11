@@ -107,7 +107,7 @@ public class BozkatuKud {
         String query = "SELECT  o.herrialdea, o.abestia, o.artista, o.puntuak, h.bandera   " +
                 "FROM Ordezkaritza o, Herrialde h " +
                 "WHERE  o.herrialdea=h.izena " +
-                "ORDER BY o.puntuak "+
+                "ORDER BY o.puntuak DESC "+
                 "LIMIT 3;";
 
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
@@ -120,9 +120,10 @@ public class BozkatuKud {
     public void puntuakEguneratu(ObservableList<Herrialdea> pHerrialdeenZerrenda, String pBozkatzailea) {
 
         for(Herrialdea herriHau : pHerrialdeenZerrenda){
-            this.bozkaketaDatuBaseanIdatzi(pBozkatzailea, herriHau);
+            if(herriHau.getBozkaketakoPuntuak()!=0) {
+                this.bozkaketaDatuBaseanIdatzi(pBozkatzailea, herriHau);
+            }
         }
-
     }
 
     private void bozkaketaDatuBaseanIdatzi(String pBozkatzailea, Herrialdea pHerria) {
@@ -153,9 +154,9 @@ public class BozkatuKud {
         int     puntuak        = pHerria.getPuntuak();
 
         String eskaera ="UPDATE Ordezkaritza " +
-                "SET "+puntuak+" " +
-                "WHERE herrialdea = '"+bozkatuaIzanDa+"' AND " +
-                "urtea = strftime('%Y', datetime('now'));";
+                        "SET puntuak="+puntuak+" " +
+                        "WHERE herrialdea = '"+bozkatuaIzanDa+"' AND " +
+                        "urtea = strftime('%Y', datetime('now'));";
 
         return eskaera;
 

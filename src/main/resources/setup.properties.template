@@ -4,4 +4,6 @@ password=
 useSSL=FALSE
 serverTimezone=Europe/Madrid
 irudienDirektorioa=./irudiak/
+irudienDirektorioa=src/main/resources/irudiak/
 logoNagusia=eurovisionlogo.jpeg
+bihotza=eurovisionheart.png

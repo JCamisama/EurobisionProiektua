@@ -104,6 +104,11 @@ public class HerrialdeaHautatuKud implements LeihoKudeatzaile {
     public void herrialdeaEguneratu(String pHerrialde){}
 
     @Override
+    public void top3Eguneratu() {
+
+    }
+
+    @Override
     public void setMainApp(EurobiMain pNagusia) {
         this.apiNagusia = pNagusia;
     }

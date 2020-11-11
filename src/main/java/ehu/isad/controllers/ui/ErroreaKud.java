@@ -44,5 +44,10 @@ public class ErroreaKud implements LeihoKudeatzaile {
     }
 
     @Override
+    public void top3Eguneratu() {
+
+    }
+
+    @Override
     public void initialize(URL location, ResourceBundle resources) {}
 }
