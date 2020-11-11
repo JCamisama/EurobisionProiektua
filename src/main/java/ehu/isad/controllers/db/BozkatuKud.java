@@ -29,7 +29,7 @@ public class BozkatuKud {
         ResultSet rs = dbKudeatzaile.execSQL(query);
         bozkatuAlDu = rs.next();
 
-        return rs.next();
+        return bozkatuAlDu;
     }
 
 
